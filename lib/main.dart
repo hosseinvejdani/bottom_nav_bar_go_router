@@ -1,6 +1,6 @@
 import 'package:bottom_nav_bar_go_router/loading_screen.dart';
 import 'package:bottom_nav_bar_go_router/login_screen.dart';
-import 'package:bottom_nav_bar_go_router/root_screen.dart';
+import 'package:bottom_nav_bar_go_router/section_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
