@@ -1,3 +1,4 @@
+import 'package:bottom_nav_bar_go_router/go_route_extension.dart';
 import 'package:bottom_nav_bar_go_router/loading_screen.dart';
 import 'package:bottom_nav_bar_go_router/login_screen.dart';
 import 'package:bottom_nav_bar_go_router/router.dart';
@@ -7,30 +8,15 @@ import 'package:go_router/go_router.dart';
 
 import 'sub_screen.dart';
 
-Future<void> main() async {
-  runApp(MyApp());
-}
+class AppRoutes {
+  AppRoutes._();
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
-  final GoRouter _router = GoRouter(
+  static final GoRouter router = GoRouter(
     initialLocation: '/',
     routes: <RouteBase>[
-      GoRoute(
-        path: '/',
-        name: AppRouter.loading,
-        builder: (BuildContext context, GoRouterState state) {
-          return const LoadingScreen();
-        },
-        routes: [
-          GoRoute(
-            path: AppRouter.login,
-            name: AppRouter.login,
-            builder: (BuildContext context, GoRouterState state) {
-              return const LoginScreen();
-            },
-          ),
+      AppRoutes.root.withSubRoutes(
+        subRoutes: [
+          AppRoutes.login,
           StatefulShellRoute.indexedStack(
             builder: (BuildContext context, GoRouterState state, StatefulNavigationShell navigationShell) {
               return ScaffoldBottomNavigationBar(
@@ -40,42 +26,12 @@ class MyApp extends StatelessWidget {
             branches: <StatefulShellBranch>[
               StatefulShellBranch(
                 routes: <RouteBase>[
-                  GoRoute(
-                    path: AppRouter.screenA,
-                    name: AppRouter.screenA,
-                    builder: (BuildContext context, GoRouterState state) {
-                      return const SectionScreen(label: 'Section A', subName: AppRouter.screenASub);
-                    },
-                    routes: [
-                      GoRoute(
-                        path: AppRouter.screenASub,
-                        name: AppRouter.screenASub,
-                        builder: (BuildContext context, GoRouterState state) {
-                          return const SubScreen(label: 'Section A Sub');
-                        },
-                      ),
-                    ],
-                  ),
+                  AppRoutes.screenA.withSubRoutes(subRoutes: [AppRoutes.screenASub]),
                 ],
               ),
               StatefulShellBranch(
                 routes: <RouteBase>[
-                  GoRoute(
-                    path: AppRouter.screenB,
-                    name: AppRouter.screenB,
-                    builder: (BuildContext context, GoRouterState state) {
-                      return const SectionScreen(label: 'Section B', subName: AppRouter.screenBSub);
-                    },
-                    routes: [
-                      GoRoute(
-                        path: AppRouter.screenBSub,
-                        name: AppRouter.screenBSub,
-                        builder: (BuildContext context, GoRouterState state) {
-                          return const SubScreen(label: 'Section B Sub');
-                        },
-                      ),
-                    ],
-                  ),
+                  AppRoutes.screenB.withSubRoutes(subRoutes: [AppRoutes.screenBSub]),
                 ],
               ),
             ],
@@ -85,12 +41,66 @@ class MyApp extends StatelessWidget {
     ],
   );
 
+  static final root = GoRoute(
+    path: '/',
+    name: AppRouter.loading,
+    builder: (BuildContext context, GoRouterState state) {
+      return const LoadingScreen();
+    },
+  );
+
+  static final login = GoRoute(
+    path: AppRouter.login,
+    name: AppRouter.login,
+    builder: (BuildContext context, GoRouterState state) {
+      return const LoginScreen();
+    },
+  );
+
+  static final screenA = GoRoute(
+    path: AppRouter.screenA,
+    name: AppRouter.screenA,
+    builder: (BuildContext context, GoRouterState state) {
+      return const SectionScreen(label: 'Section A', subName: AppRouter.screenASub);
+    },
+  );
+  static final screenASub = GoRoute(
+    path: AppRouter.screenASub,
+    name: AppRouter.screenASub,
+    builder: (BuildContext context, GoRouterState state) {
+      return const SubScreen(label: 'Section A Sub');
+    },
+  );
+
+  static final screenB = GoRoute(
+    path: AppRouter.screenB,
+    name: AppRouter.screenB,
+    builder: (BuildContext context, GoRouterState state) {
+      return const SectionScreen(label: 'Section B', subName: AppRouter.screenBSub);
+    },
+  );
+  static final screenBSub = GoRoute(
+    path: AppRouter.screenBSub,
+    name: AppRouter.screenBSub,
+    builder: (BuildContext context, GoRouterState state) {
+      return const SubScreen(label: 'Section B Sub');
+    },
+  );
+}
+
+Future<void> main() async {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Go_router Complex Demo',
       theme: ThemeData(primarySwatch: Colors.orange),
-      routerConfig: _router,
+      routerConfig: AppRoutes.router,
     );
   }
 }
