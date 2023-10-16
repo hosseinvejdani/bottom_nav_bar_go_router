@@ -2,8 +2,8 @@ import 'package:bottom_nav_bar_go_router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class SubScreen extends StatelessWidget {
-  const SubScreen({required this.label, super.key});
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({required this.label, super.key});
 
   final String label;
 

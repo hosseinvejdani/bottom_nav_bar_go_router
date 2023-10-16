@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                context.goNamed(AppRouter.screenASub);
+                context.goNamed(AppRouter.settingScreen);
               },
               child: const Text('Login and Enter screenASub'),
             ),

@@ -3,7 +3,6 @@ class AppRouter {
   static const loading = "loading";
   static const login = "login";
   static const screenA = "screenA";
-  static const screenASub = "screenASub";
+  static const settingScreen = "settingScreen";
   static const screenB = "screenB";
-  static const screenBSub = "screenBSub";
 }

@@ -26,12 +26,12 @@ class AppRoutes {
             branches: <StatefulShellBranch>[
               StatefulShellBranch(
                 routes: <RouteBase>[
-                  AppRoutes.screenA.withSubRoutes(subRoutes: [AppRoutes.screenASub]),
+                  AppRoutes.screenA.withSubRoutes(subRoutes: [AppRoutes.settingScreen]),
                 ],
               ),
               StatefulShellBranch(
                 routes: <RouteBase>[
-                  AppRoutes.screenB.withSubRoutes(subRoutes: [AppRoutes.screenBSub]),
+                  AppRoutes.screenB,
                 ],
               ),
             ],
@@ -61,14 +61,14 @@ class AppRoutes {
     path: AppRouter.screenA,
     name: AppRouter.screenA,
     builder: (BuildContext context, GoRouterState state) {
-      return const SectionScreen(label: 'Section A', subName: AppRouter.screenASub);
+      return const SectionScreen(label: 'Section A');
     },
   );
-  static final screenASub = GoRoute(
-    path: AppRouter.screenASub,
-    name: AppRouter.screenASub,
+  static final settingScreen = GoRoute(
+    path: AppRouter.settingScreen,
+    name: AppRouter.settingScreen,
     builder: (BuildContext context, GoRouterState state) {
-      return const SubScreen(label: 'Section A Sub');
+      return const SettingsScreen(label: 'setting screen');
     },
   );
 
@@ -76,14 +76,7 @@ class AppRoutes {
     path: AppRouter.screenB,
     name: AppRouter.screenB,
     builder: (BuildContext context, GoRouterState state) {
-      return const SectionScreen(label: 'Section B', subName: AppRouter.screenBSub);
-    },
-  );
-  static final screenBSub = GoRoute(
-    path: AppRouter.screenBSub,
-    name: AppRouter.screenBSub,
-    builder: (BuildContext context, GoRouterState state) {
-      return const SubScreen(label: 'Section B Sub');
+      return const SectionScreen(label: 'Section B');
     },
   );
 }

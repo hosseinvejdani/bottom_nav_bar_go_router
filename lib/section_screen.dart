@@ -5,10 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:bottom_nav_bar_go_router/router.dart';
 
 class SectionScreen extends StatelessWidget {
-  final String subName;
   const SectionScreen({
     Key? key,
-    required this.subName,
     required this.label,
   }) : super(key: key);
 
@@ -16,7 +14,6 @@ class SectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('------------------------ Root of section $label');
     return Scaffold(
       appBar: AppBar(
         title: Text('Root of section $label'),
@@ -32,9 +29,9 @@ class SectionScreen extends StatelessWidget {
             const Padding(padding: EdgeInsets.all(4)),
             TextButton(
               onPressed: () {
-                GoRouter.of(context).goNamed(subName);
+                GoRouter.of(context).goNamed(AppRouter.settingScreen);
               },
-              child: Text('Go To $subName'),
+              child: const Text('Go To ${AppRouter.settingScreen}'),
             ),
             const Padding(padding: EdgeInsets.all(4)),
             TextButton(
