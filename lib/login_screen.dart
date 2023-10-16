@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'router.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
@@ -14,9 +16,21 @@ class LoginScreen extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
-                context.go('/sectionA');
+                context.goNamed(AppRouter.screenA);
               },
-              child: const Text('Login and Enter'),
+              child: const Text('Login and Enter ScreenA'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.goNamed(AppRouter.screenB);
+              },
+              child: const Text('Login and Enter ScreenB'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.goNamed(AppRouter.screenASub);
+              },
+              child: const Text('Login and Enter screenASub'),
             ),
           ],
         ),

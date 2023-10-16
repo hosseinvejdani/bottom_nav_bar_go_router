@@ -1,3 +1,4 @@
+import 'package:bottom_nav_bar_go_router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +17,7 @@ class LoadingScreen extends StatelessWidget {
             const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
-                context.go('/Login');
+                context.goNamed(AppRouter.login);
               },
               child: const Text('Go to Login'),
             ),
