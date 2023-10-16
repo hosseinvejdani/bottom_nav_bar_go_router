@@ -12,6 +12,8 @@ class LoadingScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Center(child: CircularProgressIndicator()),
+            const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
                 context.go('/Login');

@@ -14,10 +14,9 @@ class LoginScreen extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
-                // context.go('/sectionA');
-                context.go('/sectionB');
+                context.go('/sectionA');
               },
-              child: const Text('Go to BottomNavBar'),
+              child: const Text('Login and Enter'),
             ),
           ],
         ),
