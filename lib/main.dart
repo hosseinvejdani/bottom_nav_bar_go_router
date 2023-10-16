@@ -2,11 +2,12 @@ import 'package:bottom_nav_bar_go_router/go_route_extension.dart';
 import 'package:bottom_nav_bar_go_router/loading_screen.dart';
 import 'package:bottom_nav_bar_go_router/login_screen.dart';
 import 'package:bottom_nav_bar_go_router/router.dart';
-import 'package:bottom_nav_bar_go_router/section_screen.dart';
+import 'package:bottom_nav_bar_go_router/screen_a.dart';
+import 'package:bottom_nav_bar_go_router/screen_b.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'sub_screen.dart';
+import 'settings_screen.dart';
 
 class AppRoutes {
   AppRoutes._();
@@ -61,7 +62,7 @@ class AppRoutes {
     path: AppRouter.screenA,
     name: AppRouter.screenA,
     builder: (BuildContext context, GoRouterState state) {
-      return const SectionScreen(label: 'Section A');
+      return const ScreenA();
     },
   );
   static final settingScreen = GoRoute(
@@ -76,7 +77,7 @@ class AppRoutes {
     path: AppRouter.screenB,
     name: AppRouter.screenB,
     builder: (BuildContext context, GoRouterState state) {
-      return const SectionScreen(label: 'Section B');
+      return const ScreenB();
     },
   );
 }

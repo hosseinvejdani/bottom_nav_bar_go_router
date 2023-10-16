@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
               onPressed: () {
                 context.goNamed(AppRouter.settingScreen);
               },
-              child: const Text('Login and Enter screenASub'),
+              child: const Text('Login and Enter settings'),
             ),
           ],
         ),
