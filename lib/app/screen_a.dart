@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bottom_nav_bar_go_router/app/cubit/currency_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:bottom_nav_bar_go_router/router.dart';
+import 'router.dart';
 
 class ScreenA extends StatelessWidget {
   const ScreenA({
@@ -11,9 +13,10 @@ class ScreenA extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<UserCubit>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Root of section A'),
+        title: const Text('Screen A'),
       ),
       body: Center(
         child: Column(
@@ -26,16 +29,9 @@ class ScreenA extends StatelessWidget {
             const Padding(padding: EdgeInsets.all(4)),
             TextButton(
               onPressed: () {
-                GoRouter.of(context).goNamed(AppRouter.settingScreen);
+                GoRouter.of(context).goNamed(AppRouter.screenB);
               },
-              child: const Text('Go To settings'),
-            ),
-            const Padding(padding: EdgeInsets.all(4)),
-            TextButton(
-              onPressed: () {
-                GoRouter.of(context).goNamed(AppRouter.login);
-              },
-              child: const Text('Logout'),
+              child: const Text('Go To screenB'),
             ),
           ],
         ),
